@@ -92,3 +92,40 @@ assert(
 assert(
     (new Customer('vova'))->upperName() == 'VOVA'
 );
+
+
+
+//4. Какая разница между двумя версиями функции getLines, какие преимущества и какие ограничения
+//привносит использование генераторов?
+//Версия 1
+//function getLines($file)
+//{
+//    $f = fopen($file, "r");
+//    try {
+//        while ($line = fgets($f))
+//        {
+//            yield $line;              // сохраняет состояние функции
+//        }
+//    } finally {
+//        fclose($f);
+//    }
+//}
+//
+//Версия 2
+//function getLines($file)
+//{
+//    $f = fopen($file, "r");
+//    try {
+//        $result = [];
+//        while ($line = fgets($f)) {
+//            $result[] = $line;
+//        }
+//    } finally {
+//        fclose($f);
+//    }
+//    return $result;
+//}
+
+//foreach (getLines('file.txt')) as $n => $line {   // через yield память не загружается всем массивом сразу
+//    ...
+//}
