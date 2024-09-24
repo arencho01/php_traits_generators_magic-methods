@@ -53,3 +53,42 @@ class A
 assert(
     "GG" == (new A)->a
 );
+
+
+
+//3. При помощи trait добавьте классам новый метод, почините тесты заменив троеточие на код
+trait UpperNameTrait
+{
+    public function upperName(): string     //
+    {                                       //
+        return strtoupper($this->name);     //
+    }                                       // тут было троеточие
+}
+class User
+{
+    use UpperNameTrait;                     // тут было троеточие
+    public string $name;
+
+    public function __construct(string $name)
+    {
+        $this->name = $name;
+    }
+}
+class Customer
+{
+    use UpperNameTrait;                     // тут было троеточие
+    public string $name;
+
+    public function __construct(string $name)
+    {
+        $this->name = $name;
+    }
+}
+
+assert(
+    (new User('vova'))->upperName() == 'VOVA'
+);
+
+assert(
+    (new Customer('vova'))->upperName() == 'VOVA'
+);
